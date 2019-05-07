@@ -47,7 +47,21 @@ public class Country {
     /*
      * TODO(Студент): для класса Country переопределить методы equals и hashCode
      */
+    @Override
+    public int hashCode() {
+        return code.hashCode() + name.hashCode();
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || obj.getClass() != getClass())
+            return false;
+        if (obj == this)
+            return true;
+
+        Country other = (Country)obj;
+        return code.equals(other.code) && name.equals(other.name);
+    }
     /**
      * Возвращает экземпляр страны созданный из переданного
      * текста в формате 'Код:Название'.
@@ -61,6 +75,9 @@ public class Country {
         /*
          * TODO(Студент): Реализовать метод valueOf класса Country
          */
-        throw new UnsupportedOperationException("Not implemented yet!");
+        int index = text.indexOf(':');
+        String code = text.substring(0, index).trim();
+        String name = text.substring(index + 1).trim();
+        return new Country(code, name);
     }
 }
