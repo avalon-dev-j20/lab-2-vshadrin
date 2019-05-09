@@ -18,7 +18,7 @@ public class Task4 implements Task {
      */
     @Override
     public void run() throws IOException {
-        Properties properties = read("resources/database");
+        Properties properties = read("resources/database.properties");
 
         /*
          * TODO(Студент): Выполнить задание №4
